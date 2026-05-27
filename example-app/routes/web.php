@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\JadwalController;
 
 // Routing Dasar
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('students.index');
 });
 
 // Routing Parameter
@@ -38,3 +40,9 @@ Route::resource('products', ProductController::class);
 
 // Resource Route ke MahasiswaController
 Route::resource('mahasiswa', MahasiswaController::class);
+
+// Resource Route ke StudentController
+Route::resource('students', StudentController::class);
+
+// Route ke halaman Jadwal Mata Kuliah
+Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.index');
